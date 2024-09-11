@@ -1,0 +1,25 @@
+{% extends 'users/usersbase.html' %} 
+
+{% load crispy_forms_tags %}
+
+
+
+
+
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
+
+{% endblock content %}

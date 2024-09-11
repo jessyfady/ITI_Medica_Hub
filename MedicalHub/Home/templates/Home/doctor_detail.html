@@ -1,0 +1,25 @@
+{% include 'Home/base.html' %}
+{% load static %}
+{% include 'Home/nav.html' %}
+
+
+{% block content %}
+<div class="doctor-details">
+    <div class="doctor-card">
+        <img src="{% static 'Home/images/person.png' %}" alt="{{ doctor.Name }}">
+        <div class="info">
+            <h2>{{ doctor.Name }}</h2>
+            <p><strong>Specialty:</strong> {{ doctor.special }}</p>
+            <p><strong>Area:</strong> {{ doctor.area }}</p>
+           
+        </div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/" class="btn btn-link"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.bi-instagram.com/" class="btn btn-link"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/" class="btn btn-link"><i class="bi bi-linkedin"></i></a>
+        </div>
+        <a href="{% url 'book_appointment' doctor.id %}" class="btn btn-primary">Book Appointment</a>
+    </div>
+</div>
+{% endblock content %}
+{% include 'Home/footer.html' %}

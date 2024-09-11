@@ -1,0 +1,75 @@
+{% include 'Home/base.html' %}
+{% load static %}
+{% include 'Home/nav.html' %}
+
+{% block content %}
+    <h1 class="text-center">Welcome, {{ request.user.username }}!</h1>
+    
+
+    <div class="dropdown-container">
+        <form method="GET" action="" class="search-form">
+           
+            <div class="form-group custom-dropdown">
+                <label for="special-dropdown">Select Specialty</label>
+                <select class="form-control custom-select" id="special-dropdown" name="special">
+                    <option value="">Select a Specialty</option>
+                    {% for specialty in specialties %}
+                        <option value="{{ specialty }}" {% if request.GET.special == specialty|stringformat:"s" %}selected{% endif %}>
+                            {{ specialty }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+    
+            <div class="form-group custom-dropdown">
+                <label for="area-dropdown">Select Area</label>
+                <select class="form-control custom-select" id="area-dropdown" name="area">
+                    <option value="">Select an Area</option>
+                    {% for area in areas %}
+                        <option value="{{ area }}" {% if request.GET.area == area|stringformat:"s" %}selected{% endif %}>
+                            {{ area }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+    
+            
+            <div class="form-group">
+                <label for="search-query">Search by Specialty and Area (e.g., 'Dentist-New Cairo')</label>
+                <input type="text" id="search-query" name="search" class="form-control" placeholder="Enter Specialty-Area" value="{{ request.GET.search }}">
+            </div>
+    
+            
+            <div class="form-group search-btn-container">
+                <button type="submit" class="btn btn-primary search-btn">Search</button>
+            </div>
+        </form>
+    </div>
+    
+
+  
+    <div class="doctor-results">
+        <h2>Search Results</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for doctor in doctors %}
+                <div class="col">
+                    <a href="{% url 'doctor_detail' doctor.id %}" class="text-decoration-none">
+                        <div class="card h-100 shadow text-center">
+                            <img src="{% static 'Home/images/person.png' %}" class="card-img" style="width: 75%; margin: 15px auto;">
+                            <div class="card-body">
+                                <h4>{{ doctor.Name }}</h4>
+                                <p class="card-text">{{ doctor.special }}</p>
+                                <p class="card-text">{{ doctor.area }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+                <p>No doctors found matching your criteria.</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+{% endblock content %}
+
+{% include 'Home/footer.html' %}

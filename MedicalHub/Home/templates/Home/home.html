@@ -1,0 +1,237 @@
+{% include 'Home/base.html' %}
+{% load static %}
+{% include 'Home/nav.html' %}
+
+{% block content %}   
+
+
+
+
+<!-- Carousel Section -->
+<div id="carousel-slider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel-slider" data-bs-slide-to="0" class="active" aria-current="true"></button>
+        <button type="button" data-bs-target="#carousel-slider" data-bs-slide-to="1" ></button>
+        <button type="button" data-bs-target="#carousel-slider" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'Home/images/1.jpg' %}" class="d-block w-100" alt="...">
+
+            <div class="carousel-caption text-white">
+                <div class="background-1">
+                    <h2>Surgery</h2>
+                    <p>Surgery is a medical specialty that uses operative manual and instrumental techniques on a person
+                        to investigate or treat a pathological condition such as a disease or injury, to help improve
+                        bodily function or appearance or to repair unwanted ruptured areas.
+                    </p>
+                    <button class="btn btn-light"><a href="#departments" class="nav-link">See All Services</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'Home/images/2.png' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption text-white">
+                <div class="background-1">
+                    <h2>Dentist</h2>
+                    <p>Dentist is a Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione, veniam deserunt. Cum qui commodi harum praesentium magni asperiores aliquam voluptatum provident saepe nemo. Ipsum dolorum possimus omnis vero nam quasi!
+                    </p>
+                    <button class="btn btn-light"><a href="#departments" class="nav-link">See All Services</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'Home/images/3.jpg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption text-white">
+                <div class="background-1">
+                    <h2>Surgery</h2>
+                    <p>Surgery is a medical specialty that uses operative manual and instrumental techniques on a person
+                        to investigate or treat a pathological condition such as a disease or injury, to help improve
+                        bodily function or appearance or to repair unwanted ruptured areas.
+                    </p>
+                    <button class="btn btn-light"><a href="#departments" class="nav-link">See All Services</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-slider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel-slider" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- Introduction Section -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{% static 'Home/images/4.avif' %}" style="width: 800px;height: 400px;padding-top: 15px;">
+        </div>
+        <div class="col-md-4 " id="intro-text">
+          <br>  <h1 class="text-center">Welcome to Medical Hub</h1>
+            <p class="text-justify">
+                <h5>Medical Hub is a Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt sint esse corrupti porro doloremque beatae deserunt maxime nemo quidem! Eos facilis amet pariatur, sunt quidem voluptatem voluptas minima tempora laudantium?.</h5>
+            </p>
+            <img src="{% static 'Home/images/4.avif' %}" style="width: 800px;height: 400px;">
+        </div>
+        <div class="col-md-4">
+            <div class="container-fluid">
+                <br>
+                <button class="btn btn-lg btn-block"><a href="#about" class="nav-link"><i class="bi bi-window-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Request
+                        Appointments</a></button>
+                <br>
+                <button class="btn btn-lg btn-block"><a href="#doctors" class="nav-link"><i class="bi bi-person-lines-fill"></i>&nbsp;&nbsp;&nbsp;&nbsp;Find
+                        Doctors</a></button>
+                <br>
+                <button class="btn btn-lg btn-block"><a href="{% url 'Contact' %}" class="nav-link"><i class="bi bi-telephone-fill"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                        Contact</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Medical Services -->
+<div class="container-fluid" id="departments">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Medical Services</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for specialty in specialties %}
+        <div class="col">
+            <div class="card h-100 shadow text-center">
+                <img src="{% static 'Home/images/1.jpg' %}" class="card-img " style=" margin-left: auto; margin-right: auto; width: 75%; padding-top: 15px;">
+                <div class="card-body">
+                    <p class="card-text">{{ specialty }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!---Medical Services End-->
+<!--Other Services Section Beginning-->
+
+<div class="container-fluid" id="services">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Other Services</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Card 1 -->
+            <div class="col">
+                <div class="card shadow text-center h-100">
+                    <img src="{% static 'Home/images/3.jpg' %} " alt="Pharmacy Service" class="card-img " style=" margin-left: auto; margin-right: auto; width: 75%; padding-top: 15px;">
+                    <div class="card-body">
+                        <p class="card-text">Pharmacy</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Card 2 -->
+            <div class="col">
+                <div class="card shadow text-center h-100">
+                    <img src="{% static 'Home/images/1.jpg' %} " alt="Pharmacy Service" class="card-img " style=" margin-left: auto; margin-right: auto; width: 75%;padding-top: 15px;">
+                    <div class="card-body">
+                        <p class="card-text">Pharmacy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col">
+                <div class="card shadow text-center h-100">
+                    <img src="{% static 'Home/images/3.jpg' %} " alt="Pharmacy Service" class="card-img " style=" margin-left: auto; margin-right: auto; width: 75%;padding-top: 15px;">
+                    <div class="card-body">
+                        <p class="card-text">Pharmacy</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Card 4 -->
+            <div class="col">
+                <div class="card shadow text-center h-100">
+                    <img src="{% static 'Home/images/1.jpg' %} " alt="Pharmacy Service" class="card-img " style=" margin-left: auto; margin-right: auto; width: 75%;padding-top: 15px;">
+                    <div class="card-body">
+                        <p class="card-text">Pharmacy</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Card 5 -->
+            <div class="col">
+                <div class="card shadow text-center h-100">
+                    <img src="{% static 'Home/images/3.jpg' %} " alt="Pharmacy Service" class="card-img " style=" margin-left: auto; margin-right: auto; width: 75%;padding-top: 15px;">
+                    <div class="card-body">
+                        <p class="card-text">Pharmacy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col">
+                <div class="card shadow text-center h-100">
+                    <img src="{% static 'Home/images/1.jpg' %} " alt="Pharmacy Service" class="card-img " style=" margin-left: auto; margin-right: auto; width: 75%;padding-top: 15px;">
+                    <div class="card-body">
+                        <p class="card-text">Pharmacy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--End of Other services-->
+
+
+<!----Meet Our Team Section------->
+
+<div class="container-fluid" id="doctors">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Specialist Doctors</h1>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for doctor in doctors %}
+        <div class="col">
+            <div class="card shadow text-center h-100">
+                <div class="card-body profile-card">
+                    <img class="img-thumbnail rounded-circle border-0" src="{% static 'Home/images/person.png' %}" style="width: 100px; height: 100px;" alt="Dr. {{ doctor.Name }}">
+                    <h4 class="card-title" style="font-size: 18px;">Dr. {{ doctor.Name }}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ doctor.special }}</h6>
+                    <p class="card-text">Mobile: {{ doctor.mobile }} <br> Area: {{ doctor.area }}</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="https://www.facebook.com/" class="btn btn-link"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.bi-instagram.com/" class="btn btn-link"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.linkedin.com/" class="btn btn-link"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!--End of Meet Our Team Section-->
+
+
+   
+
+{% endblock content %}
+{% include 'Home/footer.html' %}

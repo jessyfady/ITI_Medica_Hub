@@ -1,0 +1,35 @@
+{% include 'Home/base.html' %}
+{% load static %}
+{% include 'Home/nav.html' %}
+
+{% block content %}
+<h1 class="text-center"> Staff Dashboard </h1>
+<h1 class="text-center">Welcome, {{ request.user.username }}!</h1>
+    <br><br><br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 divbox">
+            <h2 style="color: red;">{{d}}</h2>
+            <a href="{% url 'view_doctor'%}"><h4 style="color: blue;">Doctors</h4>
+                <hr class="rounded">
+            </a>
+        </div>
+        <div class="col-sm-4 divbox">
+            <h2 style="color: red;">{{p}}</h2>
+            <a href="{% url 'view_patient'%}"><h4 style="color: blue;">Patients</h4>
+                <hr class="rounded">
+            </a>
+        </div>
+        <div class="col-sm-4 divbox">
+            <h2 style="color: red;">{{a}}</h2>
+            <a href="{% url 'view_appointment'%}"><h4 style="color: blue;">Appointments</h4>
+            <hr class="rounded">
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+    
+{% endblock content %}
+{% include 'Home/footer.html' %}
